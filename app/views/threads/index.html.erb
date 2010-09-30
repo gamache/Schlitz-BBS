@@ -1,0 +1,9 @@
+<% @threads.each do |thread| %>
+<div class="thread" id="thread-<%= thread.id %>">
+  <div class="title"><%= thread.title %></div>
+  <div class="author"><%= thread.first_author_name %></div>
+  <div class="last-author"><%= thread.last_author_name %></div>
+  <div class="last-post"><%= thread.last_post_at %></div>
+</div>
+<% end %>
+        

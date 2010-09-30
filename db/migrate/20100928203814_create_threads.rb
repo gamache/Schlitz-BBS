@@ -1,13 +1,9 @@
 class CreateThreads < ActiveRecord::Migration
-  def self.up
-    begin
-      rename_table :threads, :old_threads
-    rescue
-      nil
-    end
-    
+  def self.up    
     create_table :threads do |t|
       t.string :title
+      
+      t.integer :nposts
       
       t.string :first_author_name
       t.integer :first_author_id
@@ -23,11 +19,6 @@ class CreateThreads < ActiveRecord::Migration
 
   def self.down
     drop_table :threads
-    begin
-      rename_table :old_threads, :threads
-    rescue
-      nil
-    end
   end
 end
 

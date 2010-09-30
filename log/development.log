@@ -1,0 +1,363 @@
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (229.0ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `schema_migrations`[0m
+  [4;36;1mSQL (326.5ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to RenameOldTables (1)
+  [4;35;1mSQL (0.6ms)[0m   [0mRENAME TABLE `posts` TO `old_posts`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mRENAME TABLE `threads` TO `old_threads`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mRENAME TABLE `users` TO `old_users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('1')[0m
+Migrating to CreatePosts (20100928203807)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to RenameOldTables (1)
+Migrating to CreatePosts (20100928203807)
+  [4;35;1mSQL (80.1ms)[0m   [0mCREATE TABLE `posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `thread_id` int(11), `author_id` int(11), `author_name` varchar(255), `ip_address` varchar(255), `email` varchar(255), `subject` varchar(255), `body` text, `edit_history` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to RenameOldTables (1)
+Migrating to CreatePosts (20100928203807)
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: Table 'posts' already exists: CREATE TABLE `posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `thread_id` int(11), `author_id` int(11), `author_name` varchar(255), `ip_address` varchar(255), `email` varchar(255), `subject` varchar(255), `body` text, `edit_history` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to RenameOldTables (1)
+Migrating to CreatePosts (20100928203807)
+  [4;35;1mSQL (101.0ms)[0m   [0mCREATE TABLE `posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `thread_id` int(11), `author_id` int(11), `author_name` varchar(255), `ip_address` varchar(255), `email` varchar(255), `subject` varchar(255), `body` text, `edit_history` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to RenameOldTables (1)
+Migrating to CreatePosts (20100928203807)
+  [4;35;1mSQL (73.7ms)[0m   [0mCREATE TABLE `posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `thread_id` int(11), `author_id` int(11), `author_name` varchar(255), `ip_address` varchar(255), `email` varchar(255), `subject` varchar(255), `body` text, `edit_history` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `posts`[0m
+  [4;35;1mSQL (246.0ms)[0m   [0mCREATE INDEX `index_posts_on_thread_id` ON `posts` (`thread_id`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `posts`[0m
+  [4;35;1mSQL (182.4ms)[0m   [0mCREATE INDEX `index_posts_on_author_id` ON `posts` (`author_id`)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100928203807')[0m
+Migrating to CreateThreads (20100928203814)
+  [4;35;1mSQL (160.4ms)[0m   [0mCREATE TABLE `threads` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `nposts` int(11), `first_author_name` varchar(255), `first_author_id` int(11), `first_post_at` datetime, `last_author_name` varchar(255), `last_author_id` int(11), `last_post_at` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100928203814')[0m
+Migrating to CreateUsers (20100928203832)
+  [4;35;1mSQL (145.2ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `email` varchar(255), `preferences` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100928203832')[0m
+Migrating to TransferOldData (20100930094453)
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO posts (id, thread_id, author_id, author_name, ip_address, 
+ ema' at line 6: INSERT INTO threads (id, title, first_author_name, first_author_id, 
+ first_post_at, last_author_name, last_author_id, last_post_at, nposts)
+ SELECT tid, title, author, uid, firstpost, lastauthor, lastuid, 
+ lastpost, nposts FROM old_threads;
+ 
+ INSERT INTO posts (id, thread_id, author_id, author_name, ip_address, 
+ email, subject, body, created_at)
+ SELECT pid, tid, uid, author, ipaddr, email, subject, body, date 
+ FROM old_posts;
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to RenameOldTables (1)
+Migrating to CreatePosts (20100928203807)
+Migrating to CreateThreads (20100928203814)
+Migrating to CreateUsers (20100928203832)
+Migrating to TransferOldData (20100930094453)
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO posts (id, thread_id, author_id, author_name, ip_address, email, sub' at line 1: INSERT INTO threads (id, title, first_author_name, first_author_id, first_post_at, last_author_name, last_author_id, last_post_at, nposts) SELECT tid, title, author, uid, firstpost, lastauthor, lastuid, lastpost, nposts FROM old_threads; INSERT INTO posts (id, thread_id, author_id, author_name, ip_address, email, subject, body, created_at) SELECT pid, tid, uid, author, ipaddr, email, subject, body, date FROM old_posts; [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to RenameOldTables (1)
+Migrating to CreatePosts (20100928203807)
+Migrating to CreateThreads (20100928203814)
+Migrating to CreateUsers (20100928203832)
+Migrating to TransferOldData (20100930094453)
+  [4;35;1mSQL (88.0ms)[0m   [0m INSERT INTO threads (id, title, first_author_name, first_author_id, first_post_at, last_author_name, last_author_id, last_post_at, nposts) SELECT tid, title, author, uid, firstpost, lastauthor, lastuid, lastpost, nposts FROM old_threads; [0m
+  [4;36;1mSQL (5966.9ms)[0m   [0;1m INSERT INTO posts (id, thread_id, author_id, author_name, ip_address, email, subject, body, created_at) SELECT pid, tid, uid, author, ipaddr, email, subject, body, date FROM old_posts; [0m
+  [4;35;1mSQL (1.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100930094453')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (41.2ms)[0m   [0mSHOW FIELDS FROM `chat`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `chat`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `chat`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `files`[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mdescribe `files`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW KEYS FROM `files`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `old_posts`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `old_posts`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `old_posts`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `old_threads`[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mdescribe `old_threads`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `old_threads`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `old_users`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `old_users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `old_users`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `posts`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW KEYS FROM `posts`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `prefs`[0m
+  [4;36;1mSQL (35.5ms)[0m   [0;1mdescribe `prefs`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `prefs`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `threads`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `threads`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW KEYS FROM `threads`[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 06:08:44) [GET]
+
+NoMethodError (undefined method `paginate' for #<ThreadsController:0x1038609a8>):
+  app/controllers/threads_controller.rb:3:in `index'
+
+Rendered rescues/_trace (41.1ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-09-30 06:10:21) [GET]
+
+MissingSourceFile (no such file to load -- classic_pagination):
+  app/controllers/threads_controller.rb:1
+
+Rendered rescues/_trace (43.7ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-09-30 08:46:05) [GET]
+
+SyntaxError (/Users/gamache/Code/Schlitz-BBS/app/controllers/threads_controller.rb:10: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (117.0ms)
+Rendered rescues/_request_and_response (15.9ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-09-30 08:46:50) [GET]
+
+MissingSourceFile (no such file to load -- classic_pagination):
+  app/controllers/threads_controller.rb:1
+
+Rendered rescues/_trace (64.5ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:46:58) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:3:in `index'
+
+Rendered rescues/_trace (705.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:47:50) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:3:in `index'
+
+Rendered rescues/_trace (38.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:47:54) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:3:in `index'
+
+Rendered rescues/_trace (112.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:48:16) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:3:in `index'
+
+Rendered rescues/_trace (42.9ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:48:17) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:3:in `index'
+
+Rendered rescues/_trace (110.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-09-30 08:49:11) [GET]
+
+NameError (undefined local variable or method `will_paginate' for ThreadsController:Class):
+  app/controllers/threads_controller.rb:2
+
+Rendered rescues/_trace (36.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:50:45) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:6:in `index'
+
+Rendered rescues/_trace (43.0ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:56:26) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (103.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:56:39) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (42.7ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:57:38) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (41.7ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 08:57:39) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (108.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 09:00:15) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (42.2ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 09:04:54) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (44.0ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 09:04:56) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (104.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 09:04:56) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (38.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 09:04:57) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (40.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 09:04:58) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (38.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 09:06:01) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (42.1ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ThreadsController#index (for 127.0.0.1 at 2010-09-30 09:06:02) [GET]
+
+NoMethodError (undefined method `paginate' for Thread:Class):
+  app/controllers/threads_controller.rb:4:in `index'
+
+Rendered rescues/_trace (102.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
