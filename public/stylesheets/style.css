@@ -1,44 +1,75 @@
-body {
+html {
   background-color: black;
   color: #eeeeee;
+  text-align: left; }
+
+body {
   width: 800px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 15px;
-  margin-bottom: 15px; }
+  margin: 15px auto 15px auto;
+  text-align: left; }
+
+a {
+  color: #8888ff; }
+
+a:active {
+  color: #ff2222; }
+
+a:visited {
+  color: #ff88ff; }
 
 .clear {
   clear: both; }
 
+.index-title {
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+  padding: 0px 0px 15px 0px; }
+
 .thread {
   clear: both;
   padding: 5px; }
+  .thread .title,
+  .thread .author,
+  .thread .last-author,
+  .thread .last-post {
+    display: inline-block; }
+  .thread .title {
+    width: 50%; }
+  .thread .author {
+    width: 15%; }
+  .thread .last-author {
+    width: 15%; }
+  .thread .last-post {
+    width: 15%;
+    text-align: right; }
 
-.thread .title,
-.thread .author,
-.thread .last-author,
-.thread .last-post {
-  display: inline-block;
-  border: 1px solid red; }
-
-.thread .title {
-  width: 30%; }
-
-.thread .author {
-  width: 15%; }
-
-.thread .last-author {
-  width: 15%; }
-
-.thread .last-post {
-  width: 30%; }
+.thread-title {
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+  padding: 0px 0px 15px 0px; }
 
 .post {
   clear: both;
   padding: 5px;
-  margin: 10px;
+  margin: 15px;
   border: 1px dotted #005500; }
+  .post .body {
+    float: right;
+    width: 75%; }
 
-.post .body {
-  float: right;
-  width: 75%; }
+.odd {
+  background-color: #222222; }
+
+.pagination {
+  text-align: center;
+  margin: 10px 0px 10px 0px; }
+  .pagination a, .pagination span {
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    padding: 2px 5px 2px 5px;
+    margin: 2px; }
+  .pagination .current {
+    border: 1px solid #666666; }

@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title><%= @title || 'Schlitz BBS' %><%= " | #{subtitle}" if @subtitle %></title>
+	<title><%= @title || 'Schlitz BBS' %><%= " | #{@subtitle}" if @subtitle %></title>
 	<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
+	<%= stylesheet_tag "http://yui.yahooapis.com/2.8.1/build/reset-fonts-grids/reset-fonts-grids.css", {} %>
 	<%= stylesheet_tag 'style.css', {} %>
 </head>
 <body>
-	<header>
-		
-	</header>
+<header>
+	<ul id="left-nav">
+	</ul>
 	
-	<div id="content">
-		<%= yield %>
-	</div>
+	<ul id="right-nav">
+	</ul>
+</header>
 	
-	<footer>
-		
-	</footer>
+<div id="content">
+<%= yield %>
+</div>
+	
+<footer>
+	
+</footer>
 </body>
 </html>

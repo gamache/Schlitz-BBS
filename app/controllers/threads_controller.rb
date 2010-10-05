@@ -1,9 +1,9 @@
 class ThreadsController < ApplicationController
+  before_filter :populate_page
   before_filter :load_thread, :only => [:show]
   
   def index
-    @threads = BBSThread.paginate :page => (params[:page] || 1),
-      :order => 'last_post_at DESC'
+    @threads = BBSThread.paginate :page => @page, :order => 'last_post_at DESC'
     respond_to do |format|
       format.json {render :json => @threads}
       format.xml  {render :xml => @threads}
@@ -12,9 +12,12 @@ class ThreadsController < ApplicationController
   end
   
   def show 
+    page = params[:page]
     @posts = Post.paginate_by_thread_id @thread.id,
-      :page => (params[:page] || 1), 
+      :page => @page,
       :order => 'created_at'
+      
+    @subtitle = @thread.title
     respond_to do |format|
       format.json {render :json => {:thread => @thread, :posts => @posts} }
       format.xml  {render :xml =>  {:thread => @thread, :posts => @posts} }
@@ -23,6 +26,10 @@ class ThreadsController < ApplicationController
   end
   
   private
+  
+  def populate_page 
+    @page = params[:page] || 1
+  end
   
   def load_thread
     @thread = BBSThread.find(params[:id])

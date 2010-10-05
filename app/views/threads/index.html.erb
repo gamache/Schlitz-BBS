@@ -1,9 +1,17 @@
-<% @threads.each do |thread| %>
-<div class="thread" id="thread-<%= thread.id %>">
+<div class="index-title">
+  <%= @title || 'Schlitz BBS' %>
+</div>
+
+<%= will_paginate @threads %>
+
+<% @threads.each_with_index do |thread, i| %>
+<div class="thread <%= i%2==0 ? 'even' : 'odd' %>" id="thread-<%= thread.id %>">
   <div class="title"><%= link_to thread.title, thread_path(thread) %></div>
   <div class="author"><%= thread.first_author_name %></div>
   <div class="last-author"><%= thread.last_author_name %></div>
-  <div class="last-post"><%= thread.last_post_at %></div>
+  <div class="last-post"><%= thread.last_post_at.strftime('%y%m%d %H%M') %></div>
 </div>
 <% end %>
+
+<%= will_paginate @threads %>
         
