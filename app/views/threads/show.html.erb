@@ -1,0 +1,11 @@
+<% @posts.each do |post| %>
+<div class="post" id="post-<%= post.id %>">
+  <div class="body"><%= post.body %></div>
+  <div class="author">
+    <% if post.author_id %><%= image_tag('skull-trans.gif') %><% end %>
+    <%= post.author_name %>
+  </div>
+  <div class="date"><%= post.created_at %></div>
+  <div class="clear">&nbsp;</div>
+</div>
+<% end %>
