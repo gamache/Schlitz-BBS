@@ -1,17 +1,29 @@
-<div class="index-title">
-  <%= @title || 'Schlitz BBS' %>
+<div id="thread-index">
+  
+  <div class="index-title">
+    <%= @title || 'Schlitz BBS' %>
+  </div>
+
+  <%= will_paginate @threads %>
+
+  <div class="thread header">
+    <div class="title">Subject</div>
+    <div class="posts">Posts</div>
+    <div class="author">Created By</div>
+    <div class="last-author">Last Poster</div>
+    <div class="last-post">Last Post At</div>
+  </div>
+  
+  <% @threads.each_with_index do |thread, i| %>
+  <div class="thread <%= i%2==0 ? 'even' : 'odd' %>" id="thread-<%= thread.id %>">
+    <div class="title"><%= link_to (thread.title.empty? ? '<i>untitled</i>' : thread.title), thread_path(thread) %></div>
+    <div class="posts"><%= thread.nposts %></div>
+    <div class="author"><%= thread.first_author_name %></div>
+    <div class="last-author"><%= thread.last_author_name %></div>
+    <div class="last-post"><%= t = thread.last_post_at; t ? t.strftime('%y%m%d %H%M') : '' %></div>
+  </div>
+  <% end %>
+
+  <%= will_paginate @threads %>
+
 </div>
-
-<%= will_paginate @threads %>
-
-<% @threads.each_with_index do |thread, i| %>
-<div class="thread <%= i%2==0 ? 'even' : 'odd' %>" id="thread-<%= thread.id %>">
-  <div class="title"><%= link_to thread.title, thread_path(thread) %></div>
-  <div class="author"><%= thread.first_author_name %></div>
-  <div class="last-author"><%= thread.last_author_name %></div>
-  <div class="last-post"><%= thread.last_post_at.strftime('%y%m%d %H%M') %></div>
-</div>
-<% end %>
-
-<%= will_paginate @threads %>
-        

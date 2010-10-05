@@ -1,13 +1,19 @@
 // site-wide
 
+$bg = #000
+$fg = #eee
+$zebra = #1c1c1c
+
 html
-  background-color: #000
-  color: #eee
+  background-color: $bg
+  color: $fg
   text-align: left
 
 body
   width: 800px
   margin: 15px auto 15px auto
+  padding: 20px
+  border: 3px double white
   text-align: left
 
 a
@@ -23,33 +29,47 @@ a:visited
 
 // thread index
 
-.index-title
-  text-align: center
-  font-size: 16pt
-  font-weight: bold
-  padding: 0px 0px 15px 0px
+#thread-index
+  .header 
+    background-color: $zebra
+    font-weight: bold
+    color: #fff
+    text-decoration: underline
+    
+  .index-title
+    text-align: center
+    font-size: 16pt
+    font-weight: bold
+    padding: 0px 0px 15px 0px
 
-.thread
-  clear: both
-  padding: 5px
+  .thread
+    clear: both
+    padding: 5px
+    //margin: 10px auto 10px auto
   
-  .title,
-  .author,
-  .last-author,
-  .last-post
-    display: inline-block
-    //border: 1px solid red
+    .title,
+    .posts,
+    .author,
+    .last-author,
+    .last-post
+      display: inline-block
+      //padding: 5px 0px 5px 0px
+      //border: 1px solid red
   
-  .title 
-    width: 50%
-  .author
-    width: 15%
-  .last-author
-    width: 15%
-  .last-post
-    width: 15%
-    text-align: right
+    .title 
+      width: 45%
+    .posts
+      width: 10%
+    .author
+      width: 12%
+    .last-author
+      width: 12%
+    .last-post
+      width: 15%
+      text-align: right
 
+  .odd 
+    background-color: #181818
 
 // thread page
 
@@ -69,8 +89,7 @@ a:visited
     float: right
     width: 75%
 
-.odd 
-  background-color: #222
+
   
 
 // pager

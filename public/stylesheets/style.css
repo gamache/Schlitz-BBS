@@ -6,6 +6,8 @@ html {
 body {
   width: 800px;
   margin: 15px auto 15px auto;
+  padding: 20px;
+  border: 3px double white;
   text-align: left; }
 
 a {
@@ -20,29 +22,38 @@ a:visited {
 .clear {
   clear: both; }
 
-.index-title {
+#thread-index .header {
+  background-color: #1c1c1c;
+  font-weight: bold;
+  color: white;
+  text-decoration: underline; }
+#thread-index .index-title {
   text-align: center;
   font-size: 16pt;
   font-weight: bold;
   padding: 0px 0px 15px 0px; }
-
-.thread {
+#thread-index .thread {
   clear: both;
   padding: 5px; }
-  .thread .title,
-  .thread .author,
-  .thread .last-author,
-  .thread .last-post {
+  #thread-index .thread .title,
+  #thread-index .thread .posts,
+  #thread-index .thread .author,
+  #thread-index .thread .last-author,
+  #thread-index .thread .last-post {
     display: inline-block; }
-  .thread .title {
-    width: 50%; }
-  .thread .author {
-    width: 15%; }
-  .thread .last-author {
-    width: 15%; }
-  .thread .last-post {
+  #thread-index .thread .title {
+    width: 45%; }
+  #thread-index .thread .posts {
+    width: 10%; }
+  #thread-index .thread .author {
+    width: 12%; }
+  #thread-index .thread .last-author {
+    width: 12%; }
+  #thread-index .thread .last-post {
     width: 15%;
     text-align: right; }
+#thread-index .odd {
+  background-color: #181818; }
 
 .thread-title {
   text-align: center;
@@ -58,9 +69,6 @@ a:visited {
   .post .body {
     float: right;
     width: 75%; }
-
-.odd {
-  background-color: #222222; }
 
 .pagination {
   text-align: center;
