@@ -8,19 +8,15 @@
 </head>
 <body>
 <header>
-	<ul id="left-nav">
-	</ul>
-	
-	<ul id="right-nav">
-	</ul>
+  <%= render :partial => 'shared/nav' %>
 </header>
 	
 <div id="content">
-<%= yield %>
+  <%= yield %>
 </div>
 	
 <footer>
-	
+  <%= render :partial => 'shared/nav' %>
 </footer>
 </body>
 </html>

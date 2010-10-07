@@ -16,11 +16,11 @@
   
   <% @threads.each_with_index do |thread, i| %>
   <div class="thread <%= i%2==0 ? 'even' : 'odd' %>" id="thread-<%= thread.id %>">
-    <div class="title"><%= link_to (thread.title.empty? ? '<i>untitled</i>' : thread.title), thread_path(thread) %></div>
+    <div class="title"><%= link_to thread.title, thread_path(thread) %></div>
     <div class="posts"><%= thread.nposts %></div>
     <div class="author"><%= thread.first_author_name %></div>
     <div class="last-author"><%= thread.last_author_name %></div>
-    <div class="last-post"><%= t = thread.last_post_at; t ? t.strftime('%y%m%d %H%M') : '' %></div>
+    <div class="last-post"><%= format_date thread.last_post_at %></div>
   </div>
   <% end %>
 
