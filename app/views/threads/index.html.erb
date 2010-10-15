@@ -25,5 +25,27 @@
   <% end %>
 
   <%= will_paginate @threads %>
+  
+  <div class="post_form">
+    <% form_for :thread, @thread do |f| %>
+      <%= f.label :author %>: 
+      <%= f.text_field :author %>
+      <br />
+      
+      <%= f.label :email %>:
+      <%= f.text_field :email %>
+      <br />
+      
+      <%= f.label :title %>:
+      <%= f.text_field :title %>
+      <br />
+      
+      <%= f.label :post %>:
+      <%= f.text_area :post %>
+      <br />
+      
+      <%= f.submit %>
+    <% end %>
+  </div>
 
 </div>

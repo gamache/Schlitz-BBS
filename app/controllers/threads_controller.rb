@@ -1,3 +1,5 @@
+require 'pp'
+
 class ThreadsController < ApplicationController
   before_filter :populate_page
   before_filter :load_thread, :only => [:show]
@@ -9,6 +11,7 @@ class ThreadsController < ApplicationController
       format.xml  {render :xml => @threads}
       format.html
     end
+    @thread = BBSThread.new
   end
   
   def show 
@@ -23,6 +26,12 @@ class ThreadsController < ApplicationController
       format.xml  {render :xml =>  {:thread => @thread, :posts => @posts} }
       format.html
     end
+  end
+  
+  def create
+    logger.debug pp params[:author, :title]
+    thread = BBSThread.new(params[:thread])
+    post = Post.new(params[:post])
   end
   
   private
